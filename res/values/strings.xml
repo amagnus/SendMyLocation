@@ -2,4 +2,5 @@
 <resources>
     <string name="hello">Enter recipient number</string>
     <string name="app_name">SendMyLocation</string>
+    <string name="location_intro">Here is your current location:</string>
 </resources>

@@ -2,6 +2,7 @@ package android.iad.sml;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SendMyLocationActivity extends Activity implements OnClickListener {
@@ -23,17 +25,28 @@ public class SendMyLocationActivity extends Activity implements OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
-        Button btn = (Button) findViewById(R.id.button1);
-        btn.setOnClickListener(this);
+        Button btn = (Button)findViewById(R.id.button1);
+        btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+            	Intent intent = new Intent(SendMyLocationActivity.this, HelloGoogleMaps.class);
+                startActivity(intent);
+            }
+        });
+        
+//        Button btn = (Button) findViewById(R.id.button1);
+//        btn.setOnClickListener(this);
+        
         numberEditText = (EditText) findViewById(R.id.editText1);
     }
     
     public void onClick (View v) {
-    	String phoneNumber = numberEditText.getText().toString();
-    	Log.i(tag, "Number:" + phoneNumber);
+//    	String phoneNumber = numberEditText.getText().toString();
+//    	Log.i(tag, "Number:" + phoneNumber);
     	
+    	
+    	/*
     	if(phoneNumber.length() == 0) {
-    		Toast.makeText(this, "Enter a real number", Toast.LENGTH_SHORT).show();
+    		Toast.makeText(this, "Enter a real number dude", Toast.LENGTH_SHORT).show();
     	}
     	
     	else {
@@ -54,8 +67,11 @@ public class SendMyLocationActivity extends Activity implements OnClickListener 
             	SmsManager manager = SmsManager.getDefault();
             	manager.sendTextMessage(phoneNumber, null, Message, null, null);
         	}
+  
     	}
-    }
+  */
+    
+   }
     
     protected Location getCurrentLocation() {
     	LocationManager manager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
